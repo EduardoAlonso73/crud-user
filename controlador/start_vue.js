@@ -2,44 +2,48 @@ url = "modelo/modelo_user.php";
 let app = new Vue({
     el: "#main",
     data: {
-        name: 'Primeros pasos con vue js',
         nUserList: []
-        /*  js_nombre: "",
-         registros: [],
-         js_apellidoPaterno: "",
-         js_apellidoMaterno: "",
-         js_edad: "",
-         js_sexo: "",
-         js_foto: "",
-         save_id: [] */
     },
     methods: {
+        submit: function (e) {
+            var form = document.getElementById("datos_user");
+            var formData = new FormData(form);
+            formData.append("option", 1);
+            axios.post(url, formData).then(
+                (response) => {
+                    alertSuccessful(response.data);
+                    this.listardatos();
+                }
+            );
+        },
         listardatos() {
             var formData = new FormData();
             formData.append("option", 4);
             axios.post(url, formData).then((response) => {
                 this.nUserList = response.data;
-                /* this.cleartable(); */
             });
         },
         deleteUser(id) {
-
-            swal({
+            Swal.fire({
                 title: "¿Eliminar este registro?",
                 text: "Una vez eliminado, no podrá  revertir los cambios!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    actionDelete(id);
+                    Swal.fire(
+                        'Eliminado!',
+                        'Eliminacion exitosa ',
+                        'success'
+                    )
+                    this.listardatos();
+                }
             })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        actionDelete(id);
-                        swal("Eliminacion exitosa ", {
-                            icon: "success",
-                        });
-                        this.listardatos();
-                    } 
-                });
+
 
         }
 
@@ -49,14 +53,21 @@ let app = new Vue({
     }
 });
 
-
-
 function actionDelete(key) {
-
     var formData = new FormData();
     formData.append("option", 2);
     formData.append("key_user", key);
     axios.post(url, formData).then((response) => {
-       /*  alert(response.data); */
+        /*  alert(response.data); */
     });
+}
+
+function alertSuccessful(message){
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: message,
+        showConfirmButton: false,
+        timer: 1500
+      })
 }
