@@ -37,7 +37,7 @@
                                 <td>{{item.email}}</td>
                                 <td>{{item.created_at}}</td>
                                 <td><button type='button' class='btn btn-danger' id='eliminar' @click="deleteUser(item.id)">Eliminar</button></td>
-                                <td><button type='button' class='btn btn-success ' id='Editar' @click="fn_editar()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Editar</button></td>
+                                <td><button type='button' class='btn btn-success ' id='Editar' @click="getDataUser(item)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Editar</button></td>
 
                             </tr>
 
