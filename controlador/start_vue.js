@@ -36,27 +36,31 @@ let app = new Vue({
             }).then((result) => {
                 if (result.isConfirmed) {
                     actionDelete(id);
-                    Swal.fire(
-                        'Eliminado!',
-                        'Eliminacion exitosa ',
-                        'success'
-                    )
                     this.listardatos();
                 }
             })
-
-
         },
         getDataUser(userDt) {
-
             document.getElementById("updat_user").value = userDt.username;
             document.getElementById("updat_email").value = userDt.email;
             document.getElementById("updat_passwor").value = userDt.created_at;
             this.idUser = userDt.id;
-            alert(userDt.id);
         },
-
+        updateUser() {
+            let id = this.idUser;
+            var form = document.getElementById("datosEdit");
+            var formData = new FormData(form);
+            formData.append("option", 3);
+            formData.append("key_user", id);
+            axios.post(url, formData).then(
+                (response) => {
+                    alertSuccessful(response.data);
+                    this.listardatos();
+                }
+            );
+        }
     },
+
     created: function () {
         this.listardatos();
     }
@@ -67,8 +71,10 @@ function actionDelete(key) {
     formData.append("option", 2);
     formData.append("key_user", key);
     axios.post(url, formData).then((response) => {
-        /*  alert(response.data); */
+        Swal.fire( 'Eliminado!', response.data,'success')
+       
     });
+    
 }
 
 function alertSuccessful(message) {
