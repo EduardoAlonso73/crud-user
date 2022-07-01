@@ -5,9 +5,9 @@ $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
 $option = (isset($_POST['option'])) ? $_POST['option'] : '';
-$user = (isset($_POST['nmAdd_user'])) ? $_POST['nmAdd_user'] : '';
-$email = (isset($_POST['nmAdd_email'])) ? $_POST['nmAdd_email'] : '';
-$passwo = (isset($_POST['nmAdd_passwor'])) ? $_POST['nmAdd_passwor'] : '';
+$user = (isset($_POST['nm_user'])) ? $_POST['nm_user'] : '';
+$email = (isset($_POST['nm_email'])) ? $_POST['nm_email'] : '';
+$passwo = (isset($_POST['nm_passwor'])) ? $_POST['nm_passwor'] : '';
 
 switch ($option) {
     case 1:
@@ -19,11 +19,13 @@ switch ($option) {
         $id = (isset($_POST['key_user'])) ? $_POST['key_user'] : '';
         $consulta = "DELETE FROM users WHERE id =  $id ";
         $resultado = $conexion->query($consulta);
-        echo "Eliminacion correcta";
-
+        echo "Eliminacion correcta :) ";
         break;
     case 3:
-        echo "option 3";
+        $id = (isset($_POST['key_user'])) ? $_POST['key_user'] : '';
+        $consulta = "UPDATE users SET username='$user', passw='$passwo', email='$email' WHERE id='$id' ";
+        $resultado = $conexion->query($consulta);
+        echo "Se Edito correctamente";
         break;
     case 4:
         $consulta = "SELECT * FROM users ";
