@@ -13,8 +13,8 @@
 <body>
     <main id="main">
         <div class="container mt-5">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"> + Add</button>
-        <br><br>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"> + Add</button>
+            <br><br>
             <div class="row">
 
 
@@ -46,11 +46,11 @@
                 </div>
             </div>
         </div>
-
+        <?php require('html/modal_add_user.html'); ?>
+        <?php require('html/modal_update.html'); ?>
 
     </main>
-    <?php require('html/modal_add_user.html'); ?>
-    <?php require('html/modal_update.html'); ?>
+
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
