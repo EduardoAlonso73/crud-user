@@ -13,11 +13,12 @@
 <body>
     <main id="main">
         <div class="container mt-5">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"> + Add</button>
+        <br><br>
             <div class="row">
 
 
                 <div class="col-md-0">
-                    <h1>{{name}}</h1>
                     <table class="table table-striped table-hover">
                         <thead class=" table-dark">
                             <tr>
@@ -48,7 +49,7 @@
 
 
     </main>
-    
+    <?php require('html/modal_add_user.html'); ?>
     <?php require('html/modal_update.html'); ?>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>
