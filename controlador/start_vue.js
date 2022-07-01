@@ -2,7 +2,8 @@ url = "modelo/modelo_user.php";
 let app = new Vue({
     el: "#main",
     data: {
-        nUserList: []
+        nUserList: [],
+        idUser: 0
     },
     methods: {
         submit: function (e) {
@@ -31,7 +32,7 @@ let app = new Vue({
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Si'
             }).then((result) => {
                 if (result.isConfirmed) {
                     actionDelete(id);
@@ -45,7 +46,15 @@ let app = new Vue({
             })
 
 
-        }
+        },
+        getDataUser(userDt) {
+
+            document.getElementById("updat_user").value = userDt.username;
+            document.getElementById("updat_email").value = userDt.email;
+            document.getElementById("updat_passwor").value = userDt.created_at;
+            this.idUser = userDt.id;
+            alert(userDt.id);
+        },
 
     },
     created: function () {
@@ -62,12 +71,12 @@ function actionDelete(key) {
     });
 }
 
-function alertSuccessful(message){
+function alertSuccessful(message) {
     Swal.fire({
         position: 'center',
         icon: 'success',
         title: message,
         showConfirmButton: false,
         timer: 1500
-      })
+    })
 }
