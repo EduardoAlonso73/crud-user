@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="datos_user"  @submit.prevent="submit">
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Usuario:</label>
                         <input type="text" class="form-control" id="#add_user" name="nmAdd_user"
@@ -24,7 +24,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Send message</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Send message</button>
                     </div>
                 </form>
             </div>
