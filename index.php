@@ -13,7 +13,7 @@
 <body>
     <main id="main">
         <div class="container mt-5">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"> + Add</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"> <i class="fa-solid fa-user-plus"></i></button>
             <br><br>
             <div class="row">
 
@@ -36,8 +36,8 @@
                                 <td>{{item.username}}</td>
                                 <td>{{item.email}}</td>
                                 <td>{{item.created_at}}</td>
-                                <td><button type='button' class='btn btn-danger' id='eliminar' @click="deleteUser(item.id)">Eliminar</button></td>
-                                <td><button type='button' class='btn btn-success ' id='Editar' @click="getDataUser(item)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Editar</button></td>
+                                <td><button type='button' class='btn btn-danger' id='eliminar' @click="deleteUser(item.id)"><i class="fa-solid fa-trash"></i></button></td>
+                                <td><button type='button' class='btn btn-success ' id='Editar' @click="getDataUser(item)" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-pen-to-square"></i></button></td>
 
                             </tr>
 
@@ -60,7 +60,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="controlador/start_vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+    <script src="https://kit.fontawesome.com/7f91a4ca25.js" crossorigin="anonymous"></script>
 
 </body>
 
