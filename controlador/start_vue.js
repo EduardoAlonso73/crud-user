@@ -5,8 +5,8 @@ let app = new Vue({
         nUserList: [],
         idUser: 0
     },
-    methods: {
-        submit: function (e) {
+    methods:{
+        submit: function(e){  
             var form = document.getElementById("datos_user");
             var formData = new FormData(form);
             formData.append("option", 1);
@@ -24,7 +24,7 @@ let app = new Vue({
                 this.nUserList = response.data;
             });
         },
-        deleteUser(id) {
+        deleteUser(id){ 
             Swal.fire({
                 title: "¿Eliminar este registro?",
                 text: "Una vez eliminado, no podrá  revertir los cambios!",
@@ -35,8 +35,13 @@ let app = new Vue({
                 confirmButtonText: 'Si'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    actionDelete(id);
-                    this.listardatos();
+                    var formData = new FormData();
+                    formData.append("option", 2);
+                    formData.append("key_user", id);
+                    axios.post(url, formData).then((response) => {
+                      Swal.fire( 'Eliminado!', response.data,'success'); 
+                      this.listardatos();
+                    }); 
                 }
             })
         },
@@ -44,9 +49,9 @@ let app = new Vue({
             document.getElementById("updat_user").value = userDt.username;
             document.getElementById("updat_email").value = userDt.email;
             document.getElementById("updat_passwor").value = userDt.created_at;
-            this.idUser = userDt.id;
+            this.idUser = userDt.id; 
         },
-        updateUser() {
+        updateUser(){
             let id = this.idUser;
             var form = document.getElementById("datosEdit");
             var formData = new FormData(form);
@@ -60,22 +65,10 @@ let app = new Vue({
             );
         }
     },
-
     created: function () {
         this.listardatos();
     }
 });
-
-function actionDelete(key) {
-    var formData = new FormData();
-    formData.append("option", 2);
-    formData.append("key_user", key);
-    axios.post(url, formData).then((response) => {
-        Swal.fire( 'Eliminado!', response.data,'success')
-       
-    });
-    
-}
 
 function alertSuccessful(message) {
     Swal.fire({
