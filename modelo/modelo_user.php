@@ -25,7 +25,7 @@ switch ($option) {
         $id = (isset($_POST['key_user'])) ? $_POST['key_user'] : '';
         $consulta = "UPDATE users SET username='$user', passw='$passwo', email='$email' WHERE id='$id' ";
         $resultado = $conexion->query($consulta);
-        echo "Se Edito correctamente";
+        echo "Se actualizo correctamente";
         break;
     case 4:
         $consulta = "SELECT * FROM users ";
