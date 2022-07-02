@@ -1,4 +1,5 @@
-url = "modelo/modelo_user.php";
+let frmAdd=["Adduser","Addemail","Addpasswor"];
+let url = "modelo/modelo_user.php";
 let app = new Vue({
     el: "#main",
     data: {
@@ -14,6 +15,7 @@ let app = new Vue({
                 (response) => {
                     alertSuccessful(response.data);
                     this.listardatos();
+                    input_clear();
                 }
             );
         },
@@ -69,7 +71,9 @@ let app = new Vue({
         this.listardatos();
     }
 });
-
+/* *****************************************************
+                 ---OTHER FUNCTION ---
+ ***************************************************** */
 function alertSuccessful(message) {
     Swal.fire({
         position: 'center',
@@ -77,5 +81,12 @@ function alertSuccessful(message) {
         title: message,
         showConfirmButton: false,
         timer: 1500
+    })
+}
+function input_clear() {
+  
+    frmAdd.forEach(function (frmAdd) {
+    document.getElementById(frmAdd).value="";
+     
     })
 }
