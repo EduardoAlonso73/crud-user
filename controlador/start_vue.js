@@ -1,13 +1,15 @@
-let frmAdd=["Adduser","Addemail","Addpasswor"];
+let frmAdd = ["Adduser", "Addemail", "Addpasswor"];
 const url = "modelo/modelo_user.php";
 let app = new Vue({
     el: "#main",
     data: {
         nUserList: [],
-        idUser: 0
+        idUser: 0,
+        usernameV:"",
+        emailV: ""
     },
-    methods:{
-        submit: function(e){ 
+    methods: {
+        submit: function (e) {
             let modalAdd = document.querySelector('#exampleModal');
             let modal = bootstrap.Modal.getInstance(modalAdd);
             let form = document.getElementById("datos_user");
@@ -29,7 +31,7 @@ let app = new Vue({
                 this.nUserList = response.data;
             });
         },
-        deleteUser(id){ 
+        deleteUser(id) {
             Swal.fire({
                 title: "¿Eliminar este registro?",
                 text: "Una vez eliminado, no podrá  revertir los cambios!",
@@ -44,19 +46,19 @@ let app = new Vue({
                     formData.append("option", 2);
                     formData.append("key_user", id);
                     axios.post(url, formData).then((response) => {
-                        alertSuccessful( response.data);
-                      this.listardatos();
-                    }); 
+                        alertSuccessful(response.data);
+                        this.listardatos();
+                    });
                 }
             })
         },
         getDataUser(userDt) {
-            const {username,email,id} = userDt;
-            document.getElementById("updat_user").value = username;
-            document.getElementById("updat_email").value = email;
-            this.idUser = id; 
+            const { username, email, id } = userDt;
+            this.usernameV = username;
+            this.emailV = email;
+            this.idUser = id;
         },
-        updateUser(){
+        updateUser() {
             let modalUpdate = document.querySelector('#staticBackdrop');
             let modal = bootstrap.Modal.getInstance(modalUpdate);
             let id = this.idUser;
@@ -90,9 +92,9 @@ function alertSuccessful(message) {
     })
 }
 function input_clear() {
-  
+
     frmAdd.forEach(function (frmAdd) {
-    document.getElementById(frmAdd).value="";
-     
+        document.getElementById(frmAdd).value = "";
+
     })
 }
