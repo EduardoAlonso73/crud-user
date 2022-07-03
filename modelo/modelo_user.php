@@ -23,7 +23,7 @@ switch ($option) {
         break;
     case 3:
         $id = (isset($_POST['key_user'])) ? $_POST['key_user'] : '';
-        $consulta = "UPDATE users SET username='$user', passw='$passwo', email='$email' WHERE id='$id' ";
+        $consulta = "UPDATE users SET username='$user', email='$email' WHERE id='$id' ";
         $resultado = $conexion->query($consulta);
         echo "Se actualizo correctamente";
         break;
