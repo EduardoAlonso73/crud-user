@@ -1,5 +1,5 @@
 let frmAdd=["Adduser","Addemail","Addpasswor"];
-let url = "modelo/modelo_user.php";
+const url = "modelo/modelo_user.php";
 let app = new Vue({
     el: "#main",
     data: {
@@ -7,20 +7,23 @@ let app = new Vue({
         idUser: 0
     },
     methods:{
-        submit: function(e){  
-            var form = document.getElementById("datos_user");
-            var formData = new FormData(form);
+        submit: function(e){ 
+            let modalAdd = document.querySelector('#exampleModal');
+            let modal = bootstrap.Modal.getInstance(modalAdd);
+            let form = document.getElementById("datos_user");
+            let formData = new FormData(form);
             formData.append("option", 1);
             axios.post(url, formData).then(
                 (response) => {
                     alertSuccessful(response.data);
                     this.listardatos();
                     input_clear();
+                    modal.hide();
                 }
             );
         },
         listardatos() {
-            var formData = new FormData();
+            let formData = new FormData();
             formData.append("option", 4);
             axios.post(url, formData).then((response) => {
                 this.nUserList = response.data;
@@ -37,32 +40,35 @@ let app = new Vue({
                 confirmButtonText: 'Si'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    var formData = new FormData();
+                    let formData = new FormData();
                     formData.append("option", 2);
                     formData.append("key_user", id);
                     axios.post(url, formData).then((response) => {
-                      Swal.fire( 'Eliminado!', response.data,'success'); 
+                        alertSuccessful( response.data);
                       this.listardatos();
                     }); 
                 }
             })
         },
         getDataUser(userDt) {
-            document.getElementById("updat_user").value = userDt.username;
-            document.getElementById("updat_email").value = userDt.email;
-            document.getElementById("updat_passwor").value = userDt.created_at;
-            this.idUser = userDt.id; 
+            const {username,email,id} = userDt;
+            document.getElementById("updat_user").value = username;
+            document.getElementById("updat_email").value = email;
+            this.idUser = id; 
         },
         updateUser(){
+            let modalUpdate = document.querySelector('#staticBackdrop');
+            let modal = bootstrap.Modal.getInstance(modalUpdate);
             let id = this.idUser;
-            var form = document.getElementById("datosEdit");
-            var formData = new FormData(form);
+            let form = document.getElementById("datosEdit");
+            let formData = new FormData(form);
             formData.append("option", 3);
             formData.append("key_user", id);
             axios.post(url, formData).then(
                 (response) => {
                     alertSuccessful(response.data);
                     this.listardatos();
+                    modal.hide();
                 }
             );
         }
