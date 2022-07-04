@@ -5,8 +5,9 @@ let app = new Vue({
     data: {
         nUserList: [],
         idUser: 0,
-        usernameV:"",
-        emailV: ""
+        usernameV: "",
+        emailV: "",
+        loading: false
     },
     methods: {
         submit: function (e) {
@@ -24,10 +25,10 @@ let app = new Vue({
                 }
             );
         },
-        listardatos() {
+        async listardatos() {
             let formData = new FormData();
             formData.append("option", 4);
-            axios.post(url, formData).then((response) => {
+            await axios.post(url, formData).then((response) => {
                 this.nUserList = response.data;
             });
         },
@@ -76,7 +77,12 @@ let app = new Vue({
         }
     },
     created: function () {
-        this.listardatos();
+        this.loading = true;
+        Promise.all([this.listardatos()]).then((err) => {
+            this.loading = false;
+        }).catch((err) => {
+            this.loading = false;
+        });
     }
 });
 /* *****************************************************
