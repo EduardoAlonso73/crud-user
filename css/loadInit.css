@@ -22,4 +22,10 @@
     width: 15%;
 }
 
-
+#github{
+	width: 30px;
+	margin:15px;	
+	float: right;
+	cursor: pointer;
+	
+}

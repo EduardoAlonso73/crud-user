@@ -8,11 +8,12 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        
+        <link rel="shortcut icon" href="https://www.svgrepo.com/show/13656/user.svg" type="image/x-icon">
 <link rel="stylesheet" href="./css/loadInit.css">
 </head>
 
 <body>
+<a href="https://github.com/EduardoAlonso73/crud-user.git"  target="_blank"><img src="https://www.svgrepo.com/show/344880/github.svg" alt="..." id="github" ></a>
         <main id="main" >
         <div class="container mt-0">
             <br>
