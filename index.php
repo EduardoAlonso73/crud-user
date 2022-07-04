@@ -8,12 +8,14 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+        
+<link rel="stylesheet" href="./css/loadInit.css">
 </head>
 
 <body>
-    <main id="main">
-        <div class="container mt-5">
+        <main id="main" >
+        <div class="container mt-0">
+            <br>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"> <i class="fa-solid fa-user-plus"></i></button>
             <br><br>
             <div class="row">
@@ -52,9 +54,13 @@
         <?php require('html/modal_add_user.html'); ?>
         <?php require('html/modal_update.html'); ?>
 
-
+        <div v-show="loading" class="loadStart">
+		<img src="./img/load1.gif" alt="..." id="img-load">
+        </div>
+    
 
     </main>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>
